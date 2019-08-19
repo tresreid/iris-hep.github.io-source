@@ -140,26 +140,18 @@ a HEP software R&D topic relevant to the Institute.
 <hr style="border: 2px solid rgb(136,134,208); border-radius: 1px;">
 
 Related projects:
-[The ATLAS experiment](https://home.cern/science/experiments/atlas) 
-&bull; [The Compact Muon Solenoid (CMS) experiment](https://home.cern/science/experiments/cms) 
-&bull; [The Large Hadron Collider beauty (LHCb) experiment](https://home.cern/science/experiments/lhcb)
-&bull; [U.S. ATLAS Collaboration](https://po.usatlas.bnl.gov/)
-&bull; [U.S. ATLAS Operations Program](https://po.usatlas.bnl.gov/programoffice/op.php)
-&bull; [U.S. CMS Collaboration](https://uscms.org/index.shtml)
-&bull; [U.S. CMS Operations Program](https://uscms.org/uscms_at_work/rpo/index.shtml)
-&bull; [Open Science Grid (OSG)](https://opensciencegrid.org/)
-&bull; [SCAILFIN](https://scailfin.github.io/)
-&bull; [SLATE](https://slateci.io)
-&bull; [VC3](https://www.virtualclusters.org)
-&bull; [DIANA/HEP](http://diana-hep.org/) 
-&bull; [Parallel Kalman Filter Tracking](http://trackreco.github.io/)
-&bull; [ACTS](https://gitlab.cern.ch/acts)
-&bull; [Scikit-HEP](http://scikit-hep.org)
-&bull; [PyHEP](https://hepsoftwarefoundation.org/workinggroups/pyhep.html)
-&bull; [HEP Software Foundation (HSF)](https://hepsoftwarefoundation.org)
-&bull; [US-RSE](http://us-rse.org)
-&bull; [FIRST-HEP](http://first-hep.org/)
-&bull; [CoDaS-HEP](http://codas-hep.org/) 
-&bull; [S2I2-HEP](http://s2i2-hep.org/)
-&bull; [DASPOS](http://daspos.org/)
+{%- assign projlist = "" | split: "," -%}
+{{ " " }}
+{%- for cat in site.data.collabcats -%}
+  {%- for proj in site.data.collaborations[cat.id] -%}
+    {%- capture projtxt -%}
+      [{{ proj.name }}]({{ proj.url }})
+    {%- endcapture -%}
+    {%- assign projlist = projlist | push: projtxt -%}
+  {%- endfor -%}
+{%- endfor -%}
+{{ projlist | join: " &bull; " }}
 ---&gt; [Full list with details](/collaborations)
+
+
+
